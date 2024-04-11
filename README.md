@@ -1,4 +1,4 @@
-# Landing-Page
+# PrintWorks Landing-Page
 
 This project is a website for PrintWorks Emprise, developed using HTML and Bootstrap.
 
@@ -16,7 +16,8 @@ The project utilizes the following technologies:
 ## File Structure
 
 - `index.html`: Main webpage.
-- `contactanos.html`: Contacs page file.
+- `galery.html`: Galery page fiile.
+- `contacto.html`: Contacs page file.
   
 ## Deployment
 
