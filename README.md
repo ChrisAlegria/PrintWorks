@@ -23,6 +23,6 @@ The project utilizes the following technologies:
 
 You can deploy this project on any static web server. Simply upload the files to the server and access the corresponding URL.
 
-## License
+## Development
 
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+This project was developed by `©ChrisAlegria`. All rights reserved.
