@@ -1,8 +1,6 @@
 # PrintWorks
 
 This project is a PWA for PrintWorks Emprise, developed using HTML and Bootstrap.
-=======
-This project is a website for PrintWorks Emprise, developed using HTML and Bootstrap.
 
 ## Viewing
 
