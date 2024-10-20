@@ -3,18 +3,19 @@ const CACHE_NAME = 'printworks-cache-v1';
 
 // Archivos que se cachearán
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/galery.html',
-  '/contacto.html',
-  '/img/1.jfif',
-  '/img/2.jfif',
-  '/img/3.jfif',
-  '/img/4.jfif',
-  '/img/5.jfif',
-  '/img/6.jfif',
-  '/img/Logo PrintWorks.png',
+  '/PrintWorks/',
+  '/PrintWorks/index.html',
+  '/PrintWorks/galery.html',
+  '/PrintWorks/contacto.html',
+  '/PrintWorks/img/1.jfif',
+  '/PrintWorks/img/2.jfif',
+  '/PrintWorks/img/3.jfif',
+  '/PrintWorks/img/4.jfif',
+  '/PrintWorks/img/5.jfif',
+  '/PrintWorks/img/6.jfif',
+  '/PrintWorks/img/Logo PrintWorks.png',
 ];
+
 
 // Instalación del Service Worker
 self.addEventListener('install', event => {
