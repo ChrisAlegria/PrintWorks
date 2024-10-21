@@ -145,7 +145,7 @@
         <!-- Seccion del formulario de contacto -->
         <div class="container mt-5">
           <h2 class="text-center mb-4">¡Envíanos tu Idea!</h2>
-          <form action="#" method="POST" class="needs-validation" novalidate>
+          <form  method="POST" class="needs-validation" novalidate>
               <div class="mb-3">
                   <label for="nombre">Nombre</label>
                   <input type="text" class="form-control" id="nombre" name="nombre" required placeholder="Ingresa tu nombre">
@@ -232,20 +232,19 @@
 
        <!-- Script que permite al formulario realizar validacion de la informacion -->
        <script>
-        document.addEventListener('DOMContentLoaded', function () {
-        var forms = document.querySelectorAll('.needs-validation');
-
-        Array.prototype.slice.call(forms).forEach(function (form) {
-            form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-                event.stopPropagation();
-                event.preventDefault();
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe
+            if (this.checkValidity()) { 
+                // Mostrar mensaje personalizado
+                alert('¡Gracias por enviarnos tu proyecto! Tu proyecto está siendo procesado, y en cuanto nuestro equipo lo revise, te contactaremos.');
+                
+                // Aquí puedes hacer una solicitud AJAX si quieres enviar el formulario a un servidor sin recargar la página
+                
+                // Si no estás usando AJAX y simplemente quieres mostrar el mensaje:
+                this.reset(); // Opcional: Resetea el formulario si quieres limpiar los campos después del envío
             }
-
-            form.classList.add('was-validated');
-            }, false);
         });
-        });
-       </script>
+        </script>
+        
     </body>
 </html>
