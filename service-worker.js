@@ -5,16 +5,16 @@ const CACHE_NAME = 'printworks-cache-v1';
 const urlsToCache = [
   '/PrintWorks/',
   '/PrintWorks/index.html',
-  '/PrintWorks/galery.html',
-  '/PrintWorks/contacto.html',
-  '/PrintWorks/sobre.html',
-  '/PrintWorks/img/1.jfif',
-  '/PrintWorks/img/2.jfif',
-  '/PrintWorks/img/3.jfif',
-  '/PrintWorks/img/4.jfif',
-  '/PrintWorks/img/5.jfif',
-  '/PrintWorks/img/6.jfif',
-  '/PrintWorks/img/Logo PrintWorks.png',
+  '/PrintWorks/pages/galery.html',
+  '/PrintWorks/pages/contacto.html',
+  '/PrintWorks/pages/sobre.html',
+  '/PrintWorks/images/1.jfif',
+  '/PrintWorks/images/2.jfif',
+  '/PrintWorks/images/3.jfif',
+  '/PrintWorks/images/4.jfif',
+  '/PrintWorks/images/5.jfif',
+  '/PrintWorks/images/6.jfif',
+  '/PrintWorks/images/Logo PrintWorks.png',
 ];
 
 
