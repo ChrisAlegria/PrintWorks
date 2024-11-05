@@ -7,6 +7,9 @@
      <!-- Manifest para PWA -->
      <link rel="manifest" href="manifest.json">
 
+     <!-- Llama a el main para las push alerts -->
+     <script src="main.js" defer></script>
+
      <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {

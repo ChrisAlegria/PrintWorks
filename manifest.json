@@ -8,7 +8,7 @@
     "theme_color": "#ea0000",
     "icons": [
       {
-        "src": "img/Logo PrintWorks.png",
+        "src": "images/Logo PrintWorks.png",
         "sizes": "968x668",
         "type": "image/png"
       }

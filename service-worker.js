@@ -17,14 +17,12 @@ const urlsToCache = [
   '/PrintWorks/images/Logo PrintWorks.png',
 ];
 
-
 // Instalación del Service Worker
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(urlsToCache);
-      })
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(urlsToCache);
+    })
   );
 });
 
@@ -47,10 +45,46 @@ self.addEventListener('activate', event => {
 // Intercepción de las peticiones de la red
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Devuelve la respuesta del cache si existe, o hace la petición a la red
-        return response || fetch(event.request);
-      })
+    caches.match(event.request).then(response => {
+      // Devuelve la respuesta del cache si existe, o hace la petición a la red
+      return response || fetch(event.request);
+    })
+  );
+});
+
+// Manejar eventos de Push
+self.addEventListener('push', event => {
+  let data = {};
+  if (event.data) {
+    data = event.data.json();
+  }
+
+  const title = data.title || 'Notificación de PrintWorks';
+  const options = {
+    body: data.body || 'Tienes una nueva notificación de PrintWorks.',
+    icon: '/PrintWorks/images/Logo PrintWorks.png',
+    badge: '/PrintWorks/images/Logo PrintWorks.png',
+    actions: [
+      { action: 'explore', title: 'Ver ahora' }
+    ]
+  };
+
+  event.waitUntil(
+    self.registration.showNotification(title, options)
+  );
+});
+
+// Manejo de interacciones con las notificaciones
+self.addEventListener('push', function(event) {
+  const data = event.data ? event.data.json() : {};
+  const title = data.title || 'Título de la Notificación';
+  const options = {
+      body: data.body || 'Cuerpo de la notificación',
+      icon: 'icon.png', // Ruta a tu icono
+      badge: 'badge.png' // Ruta a tu icono de badge
+  };
+
+  event.waitUntil(
+      self.registration.showNotification(title, options)
   );
 });
