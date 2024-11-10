@@ -7,6 +7,7 @@ const urlsToCache = [
   '/PrintWorks/index.html',
   '/PrintWorks/pages/galery.html',
   '/PrintWorks/pages/contacto.html',
+  '/PrintWorks/pages/login.html',
   '/PrintWorks/pages/sobre.html',
   '/PrintWorks/images/1.jfif',
   '/PrintWorks/images/2.jfif',
