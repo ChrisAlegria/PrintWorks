@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Pedido</title>
+    <!-- Agrega los scripts CDN para Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
 </head>
 <body>
     <h1>Formulario de Pedido</h1>
@@ -26,7 +29,65 @@
         <button type="submit">Enviar Mensaje</button>
     </form>
 
-    <!-- Incluir el archivo JavaScript -->
-    <script type="module" src="../main.js"></script>
+    <!-- Script para manejar la lógica del formulario -->
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCHTUNTswipZegyNYJuCCHdaz21gsr0cKo",
+            authDomain: "printworks-edbd5.firebaseapp.com",
+            databaseURL: "https://printworks-edbd5-default-rtdb.firebaseio.com",
+            projectId: "printworks-edbd5",
+            storageBucket: "printworks-edbd5.firebasestorage.app",
+            messagingSenderId: "704045205671",
+            appId: "1:704045205671:web:bac4daa2801aebdae2f382"
+        };
+
+        // Inicializar Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database(app); // Obtener referencia de la base de datos
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault(); // Prevenir el comportamiento por defecto de recargar la página al enviar el formulario
+                
+                // Obtener los valores de los campos
+                const nombre = document.querySelector("#nombre").value;
+                const servicio = document.querySelector("#servicio").value;
+                const correo = document.querySelector("#correo").value;
+                const telefono = document.querySelector("#telefono").value;
+                const mensaje = document.querySelector("#mensaje").value;
+                
+                // Validar que todos los campos estén completos
+                if (!nombre || !servicio || !correo || !telefono || !mensaje) {
+                    alert("Por favor, completa todos los campos.");
+                    return;
+                }
+
+                // Crear un objeto con los datos del formulario
+                const formData = {
+                    nombre: nombre,
+                    servicio: servicio,
+                    correo: correo,
+                    telefono: telefono,
+                    mensaje: mensaje,
+                    fecha: new Date().toISOString() // Agregar la fecha y hora
+                };
+
+                // Guardar los datos en Firebase Realtime Database
+                const dbRef = firebase.database().ref("pedidos"); // Ruta donde se almacenarán los datos
+                dbRef.push(formData)
+                    .then(() => {
+                        alert("¡Tu mensaje ha sido enviado correctamente!");
+                        form.reset(); // Limpiar el formulario
+                    })
+                    .catch((error) => {
+                        console.error("Error al enviar el mensaje: ", error);
+                        alert("Hubo un error al enviar tu mensaje. Intenta nuevamente.");
+                    });
+            });
+        });
+    </script>
 </body>
 </html>
