@@ -98,37 +98,41 @@
         
      <!-- Menu de navegacion -->
      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-          <!-- Contenido del navbar -->
-          <a class="navbar-brand" href="#">
-              <img src="img/Logo PrintWorks.png" alt="Logo PrintWorks" width="50">
-              <span class="navbar-brand-text">PrintWorks</span>
-          </a>
-          <!-- Botón para el colapso del menú en dispositivos pequeños -->
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <!-- Contenido del menú -->
-          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-              <ul class="navbar-nav">
-                  <!-- Pestañas del menú -->
-                  <li class="nav-item">
-                      <a class="nav-link" href="index.html">Inicio</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link"  href="galery.html">Galeria</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#">Contactanos</a>
-                </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="sobre.html">Sobre Nosotros</a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </nav>
+        <div class="container">
+            <!-- Contenido del navbar -->
+            <a class="navbar-brand" href="../index.html">
+                <img src="../images/Logo PrintWorks.png" alt="Logo PrintWorks" width="50">
+                <span class="navbar-brand-text">PrintWorks</span>
+            </a>
+            <!-- Botón para el colapso del menú en dispositivos pequeños -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Contenido del menú -->
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!-- Pestañas del menú -->
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="galery.html">Galería</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Contáctanos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre.html">Sobre Nosotros</a>
+                    </li>
+                </ul>
+                <!-- Icono de usuario en el lado derecho -->
+                <a class="nav-link" href="login.html">
+                    <i class="fas fa-user" style="color: #e74c3c; font-size: 1.5rem;"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
         <!-- Fin Menu de Navegacion -->
 
 
@@ -145,7 +149,7 @@
         <!-- Seccion del formulario de contacto -->
         <div class="container mt-5">
           <h2 class="text-center mb-4">¡Envíanos tu Idea!</h2>
-          <form action="#" method="POST" class="needs-validation" novalidate>
+          <form  method="POST" class="needs-validation" novalidate>
               <div class="mb-3">
                   <label for="nombre">Nombre</label>
                   <input type="text" class="form-control" id="nombre" name="nombre" required placeholder="Ingresa tu nombre">
@@ -183,7 +187,9 @@
                   <div class="invalid-feedback">Por favor ingresa información válida para tu mensaje.</div>
               </div><br><br>
               <button type="submit" class="btn btn-danger">Enviar Mensaje</button>
-          </form><br><br>
+              <br>
+              <button id="enable-notifications">Habilitar Notificaciones</button>
+            </form><br><br>
       </div>
 
 
@@ -199,7 +205,7 @@
             <div class="col-md-4">
               <h5>Enlaces Rápidos</h5>
               <ul class="list-unstyled">
-                <li><a href="index.html">Inicio</a></li>
+                <li><a href="../index.html">Inicio</a></li>
                 <li><a href="galery.html">Galeria</a></li>
                 <li><a href="#">Contacto</a></li>
                 <li><a href="sobre.html">Sobre Nosotros</a></li>
@@ -232,20 +238,21 @@
 
        <!-- Script que permite al formulario realizar validacion de la informacion -->
        <script>
-        document.addEventListener('DOMContentLoaded', function () {
-        var forms = document.querySelectorAll('.needs-validation');
-
-        Array.prototype.slice.call(forms).forEach(function (form) {
-            form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-                event.stopPropagation();
-                event.preventDefault();
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe
+            if (this.checkValidity()) { 
+                // Mostrar mensaje personalizado
+                alert('¡Gracias por enviarnos tu proyecto! Tu proyecto está siendo procesado, y en cuanto nuestro equipo lo revise, te contactaremos.');
+                
+                // Aquí puedes hacer una solicitud AJAX si quieres enviar el formulario a un servidor sin recargar la página
+                
+                // Si no estás usando AJAX y simplemente quieres mostrar el mensaje:
+                this.reset(); // Opcional: Resetea el formulario si quieres limpiar los campos después del envío
             }
-
-            form.classList.add('was-validated');
-            }, false);
         });
-        });
-       </script>
+        </script>
+        
+        <!-- Librerias de firebase Notify -->
+        <script src="main.js"></script>
     </body>
 </html>
