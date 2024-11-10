@@ -123,34 +123,71 @@
 
     <!-- Validación de formulario -->
     <script>
-        // Redirigir al usuario al hacer clic en el botón de envío, si el correo y contraseña son correctos
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.querySelector('form');
-            
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();  // Evita el envío real del formulario
+        // Activa la validación en el formulario
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByClassName('needs-validation');
+                Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        event.preventDefault(); // Evita el envío real del formulario
+                        
+                        var email = document.getElementById('username').value;
+                        var password = document.getElementById('password').value;
+                        
+                        // Validar correo con expresión regular
+                        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                        let isValid = true;
+                        
+                        // Limpiar todas las clases de validación previas
+                        document.getElementById('username').classList.remove('is-invalid', 'is-valid');
+                        document.getElementById('password').classList.remove('is-invalid', 'is-valid');
+                        
+                        // Validación del correo
+                        if (!emailRegex.test(email)) {
+                            document.getElementById('username').classList.add('is-invalid');
+                            isValid = false;
+                        } else {
+                            document.getElementById('username').classList.add('is-valid');
+                        }
+                        
+                        // Validación de la contraseña
+                        if (password.trim() === '') {
+                            document.getElementById('password').classList.add('is-invalid');
+                            isValid = false;
+                        } else {
+                            document.getElementById('password').classList.add('is-valid');
+                        }
     
-                // Obtener el valor del correo y la contraseña
-                const email = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
-    
-                // Validar si el correo tiene un formato válido
-                const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    
-                // Verificar si el correo y la contraseña son correctos
-                if (emailRegex.test(email)) {
-                    if (email === "admin@gmail.com" && password === "qwerty") {
-                        window.location.href = 'admin.html';  // Redirige a la página admin.html
-                    } else {
-                        window.location.href = 'pedidos.html';  // Redirige a pedidos.html si no es admin
-                    }
-                } else {
-                    alert('Por favor ingresa un correo electrónico válido.');
-                }
-            });
-        });
+                        // Si los datos son válidos, redirigir
+                        if (isValid) {
+                            if (email === "admin@gmail.com" && password === "qwerty") {
+                                window.location.href = 'admin.html';  // Redirige a la página admin.html
+                            } else {
+                                window.location.href = 'pedidos.html';  // Redirige a pedidos.html
+                            }
+                        }
+                        
+                        form.classList.add('was-validated');  // Aplica los estilos de validación
+                    }, false);
+                    
+                    // Agregar eventos de input para limpiar los errores mientras el usuario escribe
+                    var emailField = document.getElementById('username');
+                    var passwordField = document.getElementById('password');
+                    
+                    emailField.addEventListener('input', function() {
+                        // Limpiar los mensajes de error mientras se escribe
+                        emailField.classList.remove('is-invalid', 'is-valid');
+                    });
+                    
+                    passwordField.addEventListener('input', function() {
+                        // Limpiar los mensajes de error mientras se escribe
+                        passwordField.classList.remove('is-invalid', 'is-valid');
+                    });
+                });
+            }, false);
+        })();
     </script>
-    
     
 </body>
 </html>
