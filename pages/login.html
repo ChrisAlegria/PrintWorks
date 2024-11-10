@@ -123,22 +123,29 @@
 
     <!-- Validación de formulario -->
     <script>
-        // Activa la validación en el formulario
-        (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-                var forms = document.getElementsByClassName('needs-validation');
-                Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
+        // Redirigir al usuario al hacer clic en el botón de envío, si el correo es válido
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();  // Evita el envío real del formulario
+    
+                // Obtener el valor del correo
+                const email = document.getElementById('username').value;
+                
+                // Validar si el correo tiene un formato válido (usando una expresión regular simple)
+                const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                
+                // Si el correo es válido, redirigir a pedidos.html
+                if (emailRegex.test(email)) {
+                    window.location.href = 'pedidos.html';  // Redirige a la página pedidos.html
+                } else {
+                    alert('Por favor ingresa un correo electrónico válido.');
+                }
+            });
+        });
     </script>
+    
+    
 </body>
 </html>
