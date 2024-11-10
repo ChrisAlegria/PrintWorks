@@ -3,91 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Pedido</title>
-    <!-- Agrega los scripts CDN para Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Contacto de Landing Page</title>
+    <style>
+        .navbar-nav .nav-link { margin-right: 120px; }
+        .navbar-brand { display: flex; align-items: center; }
+        .navbar-brand-text { font-family: 'Arial Black', sans-serif; font-weight: bold; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-left: 10px; }
+        .bg-gradient-success { background: linear-gradient(to bottom right, #ab0d0d, #ea0000); }
+        form { max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        form button { width: 100%; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+        form button:hover { background-color: #0056b3; }
+    </style>
 </head>
+
 <body>
-    <h1>Formulario de Pedido</h1>
-    <form>
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required><br><br>
+    <!-- Menú de navegación actualizado -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container text-center">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../images/Logo PrintWorks.png" alt="Logo PrintWorks" width="50">
+                <span class="navbar-brand-text">PrintWorks</span>
+            </a>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="pedidos.html">Historial de Pedidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Realizar Pedido</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Ícono de logout a la derecha -->
+            <div class="ml-auto">
+                <a href="index.html" class="nav-link text-danger">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    
+    
 
-        <label for="servicio">Servicio:</label>
-        <input type="text" id="servicio" name="servicio" required><br><br>
+    <!-- Resto del contenido permanece igual -->
+            <!-- Seccion de Bienvenida -->
+            <section class="bg-gradient-success text-light text-center py-5">
+                <div class="container">
+                    <h1 class="display-7">¡Contactate con Nosotros!</h1>
+                    <p class="lead">
+                        ¿Tienes un diseño en mente?, ¿Quieres imprimir una pieza? Realiza tu pedido y nosotros nos póndremos en contacto contigo!.</p>
+                </div>
+            </section>
+    
+    
+            <!-- Seccion del formulario de contacto -->
+            <div class="container mt-5">
+              <h2 class="text-center mb-4">¡Envíanos tu Idea!</h2>
+              <form  method="POST" class="needs-validation" novalidate>
+                  <div class="mb-3">
+                      <label for="nombre">Nombre</label>
+                      <input type="text" class="form-control" id="nombre" name="nombre" required placeholder="Ingresa tu nombre">
+                      <div class="valid-feedback">¡Tu nombre es válido!</div>
+                      <div class="invalid-feedback">Por favor ingresa un nombre válido.</div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="servicio">Tipo de Servicio</label>
+                      <select class="form-control" id="servicio" name="servicio" required>
+                          <option value="">Selecciona un tipo de servicio</option>
+                          <option value="diseno">Diseño y Modelado de Piezas 3D</option>
+                          <option value="impresion">Impresión de Piezas 3D</option>
+                          <option value="diseno_impresion">Diseño e Impresión 3D</option>
+                          <option value="otro">Otro</option>
+                      </select>
+                      <div class="valid-feedback">¡Tipo de servicio seleccionado!</div>
+                      <div class="invalid-feedback">Por favor selecciona el tipo de servicio.</div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="correo">Correo Electrónico</label>
+                      <input type="email" class="form-control" id="correo" name="correo" required placeholder="Ingresa tu correo electrónico">
+                      <div class="valid-feedback">¡Tu correo electrónico es válido!</div>
+                      <div class="invalid-feedback">Por favor ingresa un correo electrónico válido.</div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="telefono">Número Telefónico</label>
+                      <input type="tel" class="form-control" id="telefono" name="telefono" required placeholder="Ingresa tu número telefónico">
+                      <div class="valid-feedback">¡Tu número telefónico es válido!</div>
+                      <div class="invalid-feedback">Por favor ingresa un número telefónico válido.</div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="mensaje">Descripción del servicio</label>
+                      <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required placeholder="Ingresa la descripción, características y las especificaciones del servicio"></textarea>
+                      <div class="valid-feedback">¡Tu información es válida!</div>
+                      <div class="invalid-feedback">Por favor ingresa información válida para tu mensaje.</div>
+                  </div><br><br>
+                  <button type="submit" class="btn btn-danger">Enviar Mensaje</button>
+                  <br>
+                </form><br><br>
+          </div>
+    
 
-        <label for="correo">Correo:</label>
-        <input type="email" id="correo" name="correo" required><br><br>
+          <footer class="footer bg-dark text-light py-4">
+            <div class="container text-center">
+              <div class="row">
+                <div class="col-md-4">
+                  <h5>Contáctanos</h5>
+                  <p>Correo electrónico: PrintWorksCreations@gmail.com</p>
+                  <p>Teléfono: +52 2343976920</p>
+                </div>
+                <div class="col-md-4">
+                  <h5>Enlaces Rápidos</h5>
+                  <ul class="list-unstyled">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="pages/galery.html">Galeria</a></li>
+                    <li><a href="pages/contacto.html">Contacto</a></li>
+                    <li><a href="pages/sobre.html">Sobre Nosotros</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-4">
+                  <h5>Síguenos</h5>
+                  <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="text-center">&copy; 2024 PrintWorks. Todos los derechos reservados.</p>
+                </div>
+              </div>
+            </div>
+          </footer>
 
-        <label for="telefono">Teléfono:</label>
-        <input type="text" id="telefono" name="telefono" required><br><br>
-
-        <label for="mensaje">Mensaje:</label>
-        <textarea id="mensaje" name="mensaje" required></textarea><br><br>
-
-        <button type="submit">Enviar Mensaje</button>
-    </form>
-
-    <!-- Script para manejar la lógica del formulario -->
-    <script>
-        // Configuración de Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyCHTUNTswipZegyNYJuCCHdaz21gsr0cKo",
-            authDomain: "printworks-edbd5.firebaseapp.com",
-            databaseURL: "https://printworks-edbd5-default-rtdb.firebaseio.com",
-            projectId: "printworks-edbd5",
-            storageBucket: "printworks-edbd5.firebasestorage.app",
-            messagingSenderId: "704045205671",
-            appId: "1:704045205671:web:bac4daa2801aebdae2f382"
-        };
-
-        // Inicializar Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const database = firebase.database(app); // Obtener referencia de la base de datos
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.querySelector("form");
-
-            form.addEventListener("submit", function (e) {
-                e.preventDefault(); // Prevenir el comportamiento por defecto de recargar la página al enviar el formulario
-                
-                // Obtener los valores de los campos
-                const nombre = document.querySelector("#nombre").value;
-                const servicio = document.querySelector("#servicio").value;
-                const correo = document.querySelector("#correo").value;
-                const telefono = document.querySelector("#telefono").value;
-                const mensaje = document.querySelector("#mensaje").value;
-                
-                // Validar que todos los campos estén completos
-                if (!nombre || !servicio || !correo || !telefono || !mensaje) {
-                    alert("Por favor, completa todos los campos.");
-                    return;
-                }
-
-                // Crear un objeto con los datos del formulario
-                const formData = {
-                    nombre: nombre,
-                    servicio: servicio,
-                    correo: correo,
-                    telefono: telefono,
-                    mensaje: mensaje,
-                    fecha: new Date().toISOString() // Agregar la fecha y hora
-                };
-
-                // Guardar los datos en Firebase Realtime Database
-                const dbRef = firebase.database().ref("pedidos"); // Ruta donde se almacenarán los datos
-                dbRef.push(formData)
-                    .then(() => {
-                        alert("¡Tu mensaje ha sido enviado correctamente!");
-                        form.reset(); // Limpiar el formulario
-                    })
-                    .catch((error) => {
-                        console.error("Error al enviar el mensaje: ", error);
-                        alert("Hubo un error al enviar tu mensaje. Intenta nuevamente.");
-                    });
-            });
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
 </body>
 </html>
