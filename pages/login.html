@@ -24,42 +24,32 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <!-- Contenido del navbar -->
+        <div class="container text-center">
             <a class="navbar-brand" href="../index.html">
                 <img src="../images/Logo PrintWorks.png" alt="Logo PrintWorks" width="50">
                 <span class="navbar-brand-text">PrintWorks</span>
             </a>
-            <!-- Botón para el colapso del menú en dispositivos pequeños -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Contenido del menú -->
-            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
-                    <!-- Pestañas del menú -->
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="../index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Galería</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contacto.html">Contáctanos</a>
+                        <a class="nav-link" href="galery.html">Galería</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="sobre.html">Sobre Nosotros</a>
                     </li>
                 </ul>
-                <!-- Icono de usuario en el lado derecho -->
-                <a class="nav-link" href="#">
-                    <i class="fas fa-user" style="color: #e74c3c; font-size: 1.5rem;"></i>
+            </div>
+            <!-- Ícono de logout a la derecha -->
+            <div class="ml-auto">
+                <a href="#" class="nav-link text-danger">
+                    <i class="fas fa-user text-danger"></i> Iniciar Sesión
                 </a>
             </div>
         </div>
     </nav>
-
     <section class="bg-gradient-success text-light text-center py-5">
         <div class="container">
             <h1 class="display-7">Iniciar Sesión</h1>
@@ -164,7 +154,7 @@
                             if (email === "admin@gmail.com" && password === "qwerty") {
                                 window.location.href = 'admin.html';  // Redirige a la página admin.html
                             } else {
-                                window.location.href = 'pedidos.html';  // Redirige a pedidos.html
+                                window.location.href = 'historial.html';  // Redirige a pedidos.html
                             }
                         }
                         

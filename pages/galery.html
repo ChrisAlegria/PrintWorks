@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -70,21 +69,13 @@
 
     <!-- Menu de navegacion -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <!-- Contenido del navbar -->
+        <div class="container text-center">
             <a class="navbar-brand" href="../index.html">
                 <img src="../images/Logo PrintWorks.png" alt="Logo PrintWorks" width="50">
                 <span class="navbar-brand-text">PrintWorks</span>
             </a>
-            <!-- Botón para el colapso del menú en dispositivos pequeños -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Contenido del menú -->
-            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
-                    <!-- Pestañas del menú -->
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="../index.html">Inicio</a>
                     </li>
@@ -92,19 +83,19 @@
                         <a class="nav-link active" href="#">Galería</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contacto.html">Contáctanos</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="sobre.html">Sobre Nosotros</a>
                     </li>
                 </ul>
-                <!-- Icono de usuario en el lado derecho -->
-                <a class="nav-link" href="login.html">
-                    <i class="fas fa-user" style="color: #e74c3c; font-size: 1.5rem;"></i>
+            </div>
+            <!-- Ícono de logout a la derecha -->
+            <div class="ml-auto">
+                <a href="login.html" class="nav-link text-danger">
+                    <i class="fas fa-user text-danger"></i> Iniciar Sesión
                 </a>
             </div>
         </div>
     </nav>
+
     <!-- Fin Menu de Navegacion -->
 
 
