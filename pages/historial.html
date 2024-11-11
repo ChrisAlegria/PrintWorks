@@ -34,7 +34,7 @@
                 </ul>
             </div>
             <div class="ml-auto">
-                <a href="index.html" class="nav-link text-danger">
+                <a href="../index.html" class="nav-link text-danger">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
             </div>
@@ -126,12 +126,18 @@
         };
     
         // Función para eliminar un pedido de Firebase
-        const eliminarPedido = async (id) => {
-            const pedidoRef = ref(database, 'mensajes/' + id);
-            await remove(pedidoRef);  // Eliminar el pedido
-            cargarPedidos();  // Recargar los pedidos después de eliminar
-        };
+// Función para eliminar un pedido de Firebase
+const eliminarPedido = async (id) => {
+    // Mostrar mensaje de confirmación
+    const confirmacion = window.confirm("¿Estás seguro de eliminar el pedido?");
     
+    if (confirmacion) {
+        const pedidoRef = ref(database, 'mensajes/' + id);
+        await remove(pedidoRef);  // Eliminar el pedido
+        cargarPedidos();  // Recargar los pedidos después de eliminar
+    }
+};
+
         // Asignar eliminarPedido al objeto global window
         window.eliminarPedido = eliminarPedido;
     
