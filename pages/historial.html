@@ -11,6 +11,7 @@
         .navbar-brand { display: flex; align-items: center; }
         .navbar-brand-text { font-family: 'Arial Black', sans-serif; font-weight: bold; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-left: 10px; }
         .bg-gradient-success { background: linear-gradient(to bottom right, #ab0d0d, #ea0000); }
+        .btn-danger { margin-left: 10px; }
     </style>
 </head>
 
@@ -59,6 +60,7 @@
                     <th>Correo</th>
                     <th>Teléfono</th>
                     <th>Mensaje</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody id="pedidosList">
@@ -83,8 +85,8 @@
     <!-- Firebase SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
-        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js";
-
+        import { getDatabase, ref, get, remove } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js";
+    
         const firebaseConfig = {
             apiKey: "AIzaSyCHTUNTswipZegyNYJuCCHdaz21gsr0cKo",
             authDomain: "printworks-edbd5.firebaseapp.com",
@@ -94,19 +96,19 @@
             messagingSenderId: "113733361956",
             appId: "1:113733361956:web:ca61db65c6e1c926f86fc2"
         };
-
+    
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
-
+    
         // Función para cargar los pedidos desde Firebase
         const cargarPedidos = async () => {
             const pedidosRef = ref(database, 'mensajes');
             const snapshot = await get(pedidosRef);
             const pedidos = snapshot.val();
-
+    
             const pedidosList = document.getElementById('pedidosList');
             pedidosList.innerHTML = ''; // Limpiar la lista antes de agregar los nuevos pedidos
-
+    
             // Mostrar los pedidos
             for (let id in pedidos) {
                 const pedido = pedidos[id];
@@ -117,12 +119,24 @@
                     <td>${pedido.correo}</td>
                     <td>${pedido.telefono}</td>
                     <td>${pedido.mensaje}</td>
+                    <td><button class="btn btn-danger" onclick="eliminarPedido('${id}')">Eliminar</button></td>
                 `;
                 pedidosList.appendChild(tr);
             }
         };
-
+    
+        // Función para eliminar un pedido de Firebase
+        const eliminarPedido = async (id) => {
+            const pedidoRef = ref(database, 'mensajes/' + id);
+            await remove(pedidoRef);  // Eliminar el pedido
+            cargarPedidos();  // Recargar los pedidos después de eliminar
+        };
+    
+        // Asignar eliminarPedido al objeto global window
+        window.eliminarPedido = eliminarPedido;
+    
         cargarPedidos();  // Llamada para cargar los pedidos al cargar la página
     </script>
+    
 </body>
 </html>
