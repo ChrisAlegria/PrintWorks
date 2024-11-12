@@ -130,31 +130,32 @@
       const database = getDatabase(app);
 
       const contactForm = document.getElementById("contactForm");
-      contactForm.addEventListener("submit", function(event) {
-          event.preventDefault();
-          const nombre = document.getElementById("nombre").value;
-          const servicio = document.getElementById("servicio").value;
-          const correo = document.getElementById("correo").value;
-          const telefono = document.getElementById("telefono").value;
-          const mensaje = document.getElementById("mensaje").value;
+contactForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const nombre = document.getElementById("nombre").value;
+    const servicio = document.getElementById("servicio").value;
+    const correo = document.getElementById("correo").value;
+    const telefono = document.getElementById("telefono").value;
+    const mensaje = document.getElementById("mensaje").value;
 
-          const messagesRef = ref(database, "mensajes");
-          const newMessageRef = push(messagesRef);
-          set(newMessageRef, {
-              nombre: nombre,
-              servicio: servicio,
-              correo: correo,
-              telefono: telefono,
-              mensaje: mensaje
-          })
-          .then(() => {
-              alert("Mensaje enviado correctamente.");
-              contactForm.reset();
-          })
-          .catch(error => {
-              console.error("Error al enviar mensaje: ", error);
-          });
-      });
+    const messagesRef = ref(database, "mensajes");
+    const newMessageRef = push(messagesRef);
+    set(newMessageRef, {
+        nombre: nombre,
+        servicio: servicio,
+        correo: correo,
+        telefono: telefono,
+        mensaje: mensaje,
+        finalizado: false // Agrega el valor de finalizado como false
+    })
+    .then(() => {
+        alert("Mensaje enviado correctamente.");
+        contactForm.reset();
+    })
+    .catch(error => {
+        console.error("Error al enviar mensaje: ", error);
+    });
+});
     </script>
 </body>
 </html>
