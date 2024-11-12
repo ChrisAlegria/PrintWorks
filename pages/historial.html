@@ -85,7 +85,7 @@
     <!-- Firebase SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
-        import { getDatabase, ref, get, remove } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js";
+        import { getDatabase, ref, get, remove, onValue } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js";
     
         const firebaseConfig = {
             apiKey: "AIzaSyCHTUNTswipZegyNYJuCCHdaz21gsr0cKo",
@@ -126,23 +126,39 @@
         };
     
         // Función para eliminar un pedido de Firebase
-// Función para eliminar un pedido de Firebase
-const eliminarPedido = async (id) => {
-    // Mostrar mensaje de confirmación
-    const confirmacion = window.confirm("¿Estás seguro de eliminar el pedido?");
+        const eliminarPedido = async (id) => {
+            // Mostrar mensaje de confirmación
+            const confirmacion = window.confirm("¿Estás seguro de eliminar el pedido?");
+            
+            if (confirmacion) {
+                const pedidoRef = ref(database, 'mensajes/' + id);
+                await remove(pedidoRef);  // Eliminar el pedido
+                cargarPedidos();  // Recargar los pedidos después de eliminar
+            }
+        };
     
-    if (confirmacion) {
-        const pedidoRef = ref(database, 'mensajes/' + id);
-        await remove(pedidoRef);  // Eliminar el pedido
-        cargarPedidos();  // Recargar los pedidos después de eliminar
-    }
-};
-
+        // Función para monitorear si algún pedido ha sido finalizado
+        function monitorCompletedOrders() {
+            const pedidosRef = ref(database, 'mensajes');
+            
+            onValue(pedidosRef, (snapshot) => {
+                snapshot.forEach((childSnapshot) => {
+                    const pedido = childSnapshot.val();
+                    
+                    if (pedido.finalizado === true) {
+                        alert(`¡El pedido de ${pedido.nombre} ha sido finalizado!`);
+                    }
+                });
+            });
+        }
+    
         // Asignar eliminarPedido al objeto global window
         window.eliminarPedido = eliminarPedido;
     
         cargarPedidos();  // Llamada para cargar los pedidos al cargar la página
+        monitorCompletedOrders();  // Llamada para monitorear cambios en los pedidos
     </script>
+    
     
 </body>
 </html>
