@@ -91,9 +91,9 @@
                 <label for="mensaje">Descripción del servicio</label>
                 <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required placeholder="Ingresa la descripción, características y las especificaciones del servicio"></textarea>
                 <div class="valid-feedback">¡Tu información es válida!</div>
-                <div class="invalid-feedback">Por favor ingresa información válida para tu mensaje.</div>
+                <div class="invalid-feedback">Por favor ingresa información válida para tu pedido.</div>
             </div><br><br>
-            <button type="submit" class="btn btn-danger">Enviar Mensaje</button>
+            <button type="submit" class="btn btn-danger">Enviar Pedido</button>
             <br>
         </form><br><br>
     </div>
@@ -149,11 +149,11 @@ contactForm.addEventListener("submit", function(event) {
         finalizado: false // Agrega el valor de finalizado como false
     })
     .then(() => {
-        alert("Mensaje enviado correctamente.");
+        alert("Pedido enviado correctamente.");
         contactForm.reset();
     })
     .catch(error => {
-        console.error("Error al enviar mensaje: ", error);
+        console.error("Error al enviar el pedido: ", error);
     });
 });
     </script>
