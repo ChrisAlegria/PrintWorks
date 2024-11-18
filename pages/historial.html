@@ -60,6 +60,7 @@
                     <th>Correo</th>
                     <th>Teléfono</th>
                     <th>Mensaje</th>
+                    <th>Estado</th> <!-- Nueva columna -->
                     <th>Eliminar</th>
                 </tr>
             </thead>
@@ -119,6 +120,11 @@
                     <td>${pedido.correo}</td>
                     <td>${pedido.telefono}</td>
                     <td>${pedido.mensaje}</td>
+                    <td>
+                        ${pedido.finalizado
+                            ? `<button class="btn btn-success" disabled>Finalizado</button>`
+                            : `<button class="btn btn-primary" disabled>Pendiente</button>`}
+                    </td>
                     <td><button class="btn btn-danger" onclick="eliminarPedido('${id}')">Eliminar</button></td>
                 `;
                 pedidosList.appendChild(tr);
@@ -127,9 +133,7 @@
     
         // Función para eliminar un pedido de Firebase
         const eliminarPedido = async (id) => {
-            // Mostrar mensaje de confirmación
             const confirmacion = window.confirm("¿Estás seguro de eliminar el pedido?");
-            
             if (confirmacion) {
                 const pedidoRef = ref(database, 'mensajes/' + id);
                 await remove(pedidoRef);  // Eliminar el pedido
@@ -138,40 +142,31 @@
         };
     
         // Función para monitorear si algún pedido ha sido finalizado
-// Función para monitorear si algún pedido ha sido finalizado
-function monitorCompletedOrders() {
-    const pedidosRef = ref(database, 'mensajes');
+        function monitorCompletedOrders() {
+            const pedidosRef = ref(database, 'mensajes');
+            const pedidosList = document.getElementById('pedidosList');
+            const shownOrders = JSON.parse(localStorage.getItem('shownOrders')) || [];
 
-    // Cargar los IDs de pedidos finalizados desde el almacenamiento local
-    const shownOrders = JSON.parse(localStorage.getItem('shownOrders')) || [];
+            onValue(pedidosRef, (snapshot) => {
+                snapshot.forEach((childSnapshot) => {
+                    const pedido = childSnapshot.val();
+                    const pedidoId = childSnapshot.key;
+                    
+                    // Verificar si el pedido ha cambiado su estado
+                    if (pedido.finalizado && !shownOrders.includes(pedidoId)) {
+                        alert(`¡El pedido de ${pedido.nombre} ha sido finalizado!`);
+                        shownOrders.push(pedidoId);
+                        localStorage.setItem('shownOrders', JSON.stringify(shownOrders));
+                    }
+                });
+            });
+        }
 
-    onValue(pedidosRef, (snapshot) => {
-        snapshot.forEach((childSnapshot) => {
-            const pedido = childSnapshot.val();
-            const pedidoId = childSnapshot.key;  // ID único del pedido
-            
-            // Verificar si el pedido está finalizado y no ha sido mostrado antes
-            if (pedido.finalizado === true && !shownOrders.includes(pedidoId)) {
-                alert(`¡El pedido de ${pedido.nombre} ha sido finalizado!`);
-                
-                // Agregar el ID del pedido a la lista de pedidos mostrados
-                shownOrders.push(pedidoId);
-                
-                // Guardar la lista actualizada en el almacenamiento local
-                localStorage.setItem('shownOrders', JSON.stringify(shownOrders));
-            }
-        });
-    });
-}
-
-    
         // Asignar eliminarPedido al objeto global window
         window.eliminarPedido = eliminarPedido;
     
         cargarPedidos();  // Llamada para cargar los pedidos al cargar la página
         monitorCompletedOrders();  // Llamada para monitorear cambios en los pedidos
     </script>
-    
-    
 </body>
 </html>

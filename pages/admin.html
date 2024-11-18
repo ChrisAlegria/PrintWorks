@@ -57,10 +57,14 @@
                     <th>Correo</th>
                     <th>Teléfono</th>
                     <th>Mensaje</th>
-                    <th>Eliminar</th>
-                    <th>Finalizar Pedido</th>
+                    <th>Finalizar Pedido</th> <!-- Ahora aparece antes -->
+                    <th>Eliminar</th> <!-- Ahora aparece después -->
                 </tr>
             </thead>
+            <tbody id="pedidosList">
+                <!-- Los datos se insertarán aquí dinámicamente -->
+            </tbody>
+            
             <tbody id="pedidosList">
                 <!-- Los datos se insertarán aquí dinámicamente -->
             </tbody>
@@ -99,30 +103,36 @@
         const database = getDatabase(app);
     
         // Función para cargar los pedidos desde Firebase
-        const cargarPedidos = async () => {
-            const pedidosRef = ref(database, 'mensajes');
-            const snapshot = await get(pedidosRef);
-            const pedidos = snapshot.val();
-    
-            const pedidosList = document.getElementById('pedidosList');
-            pedidosList.innerHTML = ''; // Limpiar la lista antes de agregar los nuevos pedidos
-    
-            // Mostrar los pedidos
-            for (let id in pedidos) {
-                const pedido = pedidos[id];
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${pedido.nombre}</td>
-                    <td>${pedido.servicio}</td>
-                    <td>${pedido.correo}</td>
-                    <td>${pedido.telefono}</td>
-                    <td>${pedido.mensaje}</td>
-                    <td><button class="btn btn-danger" onclick="eliminarPedido('${id}')">Eliminar</button></td>
-                    <td><button class="btn btn-primary" onclick="finalizarPedido('${id}')">Finalizar Pedido</button></td>
-                `;
-                pedidosList.appendChild(tr);
-            }
-        };
+      // Función para cargar los pedidos desde Firebase
+const cargarPedidos = async () => {
+    const pedidosRef = ref(database, 'mensajes');
+    const snapshot = await get(pedidosRef);
+    const pedidos = snapshot.val();
+
+    const pedidosList = document.getElementById('pedidosList');
+    pedidosList.innerHTML = ''; // Limpiar la lista antes de agregar los nuevos pedidos
+
+    // Mostrar los pedidos
+    for (let id in pedidos) {
+        const pedido = pedidos[id];
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${pedido.nombre}</td>
+            <td>${pedido.servicio}</td>
+            <td>${pedido.correo}</td>
+            <td>${pedido.telefono}</td>
+            <td>${pedido.mensaje}</td>
+            <td>
+                ${pedido.finalizado
+                    ? `<button class="btn btn-success" disabled>Pedido Finalizado</button>`
+                    : `<button class="btn btn-primary" onclick="finalizarPedido('${id}')">Finalizar Pedido</button>`}
+            </td> <!-- Ahora aparece antes -->
+            <td><button class="btn btn-danger" onclick="eliminarPedido('${id}')">Eliminar</button></td> <!-- Ahora aparece después -->
+        `;
+        pedidosList.appendChild(tr);
+    }
+};
+
     
         // Función para eliminar un pedido de Firebase
         const eliminarPedido = async (id) => {
@@ -133,7 +143,7 @@
                 cargarPedidos();  // Recargar los pedidos después de eliminar
             }
         };
-
+    
         // Función para finalizar un pedido en Firebase
         const finalizarPedido = async (id) => {
             const confirmacion = window.confirm("¿Deseas marcar este pedido como finalizado?");
@@ -143,12 +153,13 @@
                 cargarPedidos();  // Recargar los pedidos después de finalizar
             }
         };
-
+    
         // Asignar funciones al objeto global window
         window.eliminarPedido = eliminarPedido;
         window.finalizarPedido = finalizarPedido;
     
         cargarPedidos();  // Llamada para cargar los pedidos al cargar la página
     </script>
+    
 </body>
 </html>
