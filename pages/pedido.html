@@ -1,161 +1,166 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <title>Contacto de Landing Page</title>
-    <style>
-        .navbar-nav .nav-link { margin-right: 120px; }
-        .navbar-brand { display: flex; align-items: center; }
-        .navbar-brand-text { font-family: 'Arial Black', sans-serif; font-weight: bold; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-left: 10px; }
-        .bg-gradient-success { background: linear-gradient(to bottom right, #ab0d0d, #ea0000); }
-        form { max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
-        form button { width: 100%; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
-        form button:hover { background-color: #0056b3; }
-    </style>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contacto de Landing Page</title>
 
-<body>
-    <!-- Menú de navegación actualizado -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container text-center">
-            <a class="navbar-brand" href="../index.html">
-                <img src="../images/Logo PrintWorks.png" alt="Logo PrintWorks" width="50">
-                <span class="navbar-brand-text">PrintWorks</span>
-            </a>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="historial.html">Historial de Pedidos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Realizar Pedido</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- Ícono de logout a la derecha -->
-            <div class="ml-auto">
-                <a href="../index.html" class="nav-link text-danger">
-                    <i class="fas fa-sign-out-alt"></i> Logout
+        <!-- Librerias -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+        <!-- Estilos -->
+        <style>
+            .navbar-nav .nav-link { margin-right: 120px; }
+            .navbar-brand { display: flex; align-items: center; }
+            .navbar-brand-text { font-family: 'Arial Black', sans-serif; font-weight: bold; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-left: 10px; }
+            .bg-gradient-success { background: linear-gradient(to bottom right, #ab0d0d, #ea0000); }
+            form { max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+            form button { width: 100%; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+            form button:hover { background-color: #0056b3; }
+        </style>
+    </head>
+
+    <body>
+        <!-- Menú de navegación -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container text-center">
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../images/Logo PrintWorks.png" alt="Logo PrintWorks" width="50">
+                    <span class="navbar-brand-text">PrintWorks</span>
                 </a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Sección de Bienvenida -->
-    <section class="bg-gradient-success text-light text-center py-5">
-        <div class="container">
-            <h1 class="display-7">¡Realiza un pedido!</h1>
-            <p class="lead">
-                ¿Tienes un diseño en mente?, ¿Quieres imprimir una pieza? Realiza tu pedido y nosotros nos póndremos en contacto contigo!.</p>
-        </div>
-    </section>
-
-    <!-- Sección del formulario de contacto -->
-    <div class="container mt-5">
-        <h2 class="text-center mb-4">¡Envíanos tu Idea!</h2>
-        <form id="contactForm" class="needs-validation" novalidate>
-            <div class="mb-3">
-                <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required placeholder="Ingresa tu nombre">
-                <div class="valid-feedback">¡Tu nombre es válido!</div>
-                <div class="invalid-feedback">Por favor ingresa un nombre válido.</div>
-            </div>
-            <div class="mb-3">
-                <label for="servicio">Tipo de Servicio</label>
-                <select class="form-control" id="servicio" name="servicio" required>
-                    <option value="">Selecciona un tipo de servicio</option>
-                    <option value="diseno">Diseño y Modelado de Piezas 3D</option>
-                    <option value="impresion">Impresión de Piezas 3D</option>
-                    <option value="diseno_impresion">Diseño e Impresión 3D</option>
-                    <option value="otro">Otro</option>
-                </select>
-                <div class="valid-feedback">¡Tipo de servicio seleccionado!</div>
-                <div class="invalid-feedback">Por favor selecciona el tipo de servicio.</div>
-            </div>
-            <div class="mb-3">
-                <label for="correo">Correo Electrónico</label>
-                <input type="email" class="form-control" id="correo" name="correo" required placeholder="Ingresa tu correo electrónico">
-                <div class="valid-feedback">¡Tu correo electrónico es válido!</div>
-                <div class="invalid-feedback">Por favor ingresa un correo electrónico válido.</div>
-            </div>
-            <div class="mb-3">
-                <label for="telefono">Número Telefónico</label>
-                <input type="tel" class="form-control" id="telefono" name="telefono" required placeholder="Ingresa tu número telefónico">
-                <div class="valid-feedback">¡Tu número telefónico es válido!</div>
-                <div class="invalid-feedback">Por favor ingresa un número telefónico válido.</div>
-            </div>
-            <div class="mb-3">
-                <label for="mensaje">Descripción del servicio</label>
-                <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required placeholder="Ingresa la descripción, características y las especificaciones del servicio"></textarea>
-                <div class="valid-feedback">¡Tu información es válida!</div>
-                <div class="invalid-feedback">Por favor ingresa información válida para tu pedido.</div>
-            </div><br><br>
-            <button type="submit" class="btn btn-danger">Enviar Pedido</button>
-            <br>
-        </form><br><br>
-    </div>
-
-    <footer class="footer bg-dark text-light py-4">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-md-12">
-                    <p class="text-center">&copy; 2024 PrintWorks. Todos los derechos reservados.</p>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="historial.html">Historial de Pedidos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Realizar Pedido</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Ícono de logout a la derecha -->
+                <div class="ml-auto">
+                    <a href="../index.html" class="nav-link text-danger">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
                 </div>
             </div>
+        </nav>
+
+        <!-- Sección de Bienvenida -->
+        <section class="bg-gradient-success text-light text-center py-5">
+            <div class="container">
+                <h1 class="display-7">¡Realiza un pedido!</h1>
+                <p class="lead">
+                    ¿Tienes un diseño en mente?, ¿Quieres imprimir una pieza? Realiza tu pedido y nosotros nos póndremos en contacto contigo!.</p>
+            </div>
+        </section>
+
+        <!-- Sección del formulario de contacto -->
+        <div class="container mt-5">
+            <h2 class="text-center mb-4">¡Envíanos tu Idea!</h2>
+            <form id="contactForm" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required placeholder="Ingresa tu nombre">
+                    <div class="valid-feedback">¡Tu nombre es válido!</div>
+                    <div class="invalid-feedback">Por favor ingresa un nombre válido.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="servicio">Tipo de Servicio</label>
+                    <select class="form-control" id="servicio" name="servicio" required>
+                        <option value="">Selecciona un tipo de servicio</option>
+                        <option value="diseno">Diseño y Modelado de Piezas 3D</option>
+                        <option value="impresion">Impresión de Piezas 3D</option>
+                        <option value="diseno_impresion">Diseño e Impresión 3D</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                    <div class="valid-feedback">¡Tipo de servicio seleccionado!</div>
+                    <div class="invalid-feedback">Por favor selecciona el tipo de servicio.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="correo" name="correo" required placeholder="Ingresa tu correo electrónico">
+                    <div class="valid-feedback">¡Tu correo electrónico es válido!</div>
+                    <div class="invalid-feedback">Por favor ingresa un correo electrónico válido.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="telefono">Número Telefónico</label>
+                    <input type="tel" class="form-control" id="telefono" name="telefono" required placeholder="Ingresa tu número telefónico">
+                    <div class="valid-feedback">¡Tu número telefónico es válido!</div>
+                    <div class="invalid-feedback">Por favor ingresa un número telefónico válido.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="mensaje">Descripción del servicio</label>
+                    <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required placeholder="Ingresa la descripción, características y las especificaciones del servicio"></textarea>
+                    <div class="valid-feedback">¡Tu información es válida!</div>
+                    <div class="invalid-feedback">Por favor ingresa información válida para tu pedido.</div>
+                </div><br><br>
+                <button type="submit" class="btn btn-danger">Enviar Pedido</button>
+                <br>
+            </form><br><br>
         </div>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <footer class="footer bg-dark text-light py-4">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="text-center">&copy; 2024 PrintWorks. Todos los derechos reservados.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
-    <!-- Firebase SDK -->
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
-      import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js";
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
-      const firebaseConfig = {
-          apiKey: "AIzaSyCHTUNTswipZegyNYJuCCHdaz21gsr0cKo",
-          authDomain: "printworks-edbd5.firebaseapp.com",
-          databaseURL: "https://printworks-edbd5-default-rtdb.firebaseio.com",
-          projectId: "printworks-edbd5",
-          storageBucket: "printworks-edbd5.appspot.com",
-          messagingSenderId: "113733361956",
-          appId: "1:113733361956:web:ca61db65c6e1c926f86fc2"
-      };
-      
-      const app = initializeApp(firebaseConfig);
-      const database = getDatabase(app);
+        <!-- Firebase SDK -->
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+            import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js";
 
-      const contactForm = document.getElementById("contactForm");
-contactForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-    const nombre = document.getElementById("nombre").value;
-    const servicio = document.getElementById("servicio").value;
-    const correo = document.getElementById("correo").value;
-    const telefono = document.getElementById("telefono").value;
-    const mensaje = document.getElementById("mensaje").value;
+            const firebaseConfig = {
+                apiKey: "AIzaSyCHTUNTswipZegyNYJuCCHdaz21gsr0cKo",
+                authDomain: "printworks-edbd5.firebaseapp.com",
+                databaseURL: "https://printworks-edbd5-default-rtdb.firebaseio.com",
+                projectId: "printworks-edbd5",
+                storageBucket: "printworks-edbd5.appspot.com",
+                messagingSenderId: "113733361956",
+                appId: "1:113733361956:web:ca61db65c6e1c926f86fc2"
+            };
+            
+            const app = initializeApp(firebaseConfig);
+            const database = getDatabase(app);
 
-    const messagesRef = ref(database, "mensajes");
-    const newMessageRef = push(messagesRef);
-    set(newMessageRef, {
-        nombre: nombre,
-        servicio: servicio,
-        correo: correo,
-        telefono: telefono,
-        mensaje: mensaje,
-        finalizado: false // Agrega el valor de finalizado como false
-    })
-    .then(() => {
-        alert("Pedido enviado correctamente.");
-        contactForm.reset();
-    })
-    .catch(error => {
-        console.error("Error al enviar el pedido: ", error);
-    });
-});
-    </script>
-</body>
+            const contactForm = document.getElementById("contactForm");
+                contactForm.addEventListener("submit", function(event) {
+                    event.preventDefault();
+            const nombre = document.getElementById("nombre").value;
+            const servicio = document.getElementById("servicio").value;
+            const correo = document.getElementById("correo").value;
+            const telefono = document.getElementById("telefono").value;
+            const mensaje = document.getElementById("mensaje").value;
+
+            const messagesRef = ref(database, "mensajes");
+            const newMessageRef = push(messagesRef);
+            set(newMessageRef, {
+                nombre: nombre,
+                servicio: servicio,
+                correo: correo,
+                telefono: telefono,
+                mensaje: mensaje,
+                finalizado: false // Agrega el valor de finalizado como false
+            })
+            .then(() => {
+                alert("Pedido enviado correctamente.");
+                contactForm.reset();
+            })
+            .catch(error => {
+                console.error("Error al enviar el pedido: ", error);
+            });
+        });
+        </script>
+    </body>
 </html>

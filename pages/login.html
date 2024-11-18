@@ -1,183 +1,180 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesión</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio de Sesión</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Librerias -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <!-- Estilos -->
+        <style>
+            .navbar-nav .nav-link { margin-right: 120px; }
+            .navbar-brand-text { font-family: 'Arial Black', sans-serif; font-weight: bold; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-left: 10px; }
+            .bg-gradient-success { background: linear-gradient(to bottom right, #ab0d0d, #ea0000); }
+            form { max-width: 500px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+            form button { width: 100%; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+            form button:hover { background-color: #0056b3; }
+        </style>
+    </head>
 
-    <!-- Estilos personalizados -->
-    <style>
-        .navbar-nav .nav-link { margin-right: 120px; }
-        .navbar-brand-text { font-family: 'Arial Black', sans-serif; font-weight: bold; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-left: 10px; }
-        .bg-gradient-success { background: linear-gradient(to bottom right, #ab0d0d, #ea0000); }
-        form { max-width: 500px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
-        form button { width: 100%; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
-        form button:hover { background-color: #0056b3; }
-    </style>
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container text-center">
-            <a class="navbar-brand" href="../index.html">
-                <img src="../images/Logo PrintWorks.png" alt="Logo PrintWorks" width="50">
-                <span class="navbar-brand-text">PrintWorks</span>
-            </a>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="../index.html">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="galery.html">Galería</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="sobre.html">Sobre Nosotros</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- Ícono de logout a la derecha -->
-            <div class="ml-auto">
-                <a href="#" class="nav-link text-danger">
-                    <i class="fas fa-user text-danger"></i> Iniciar Sesión
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container text-center">
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../images/Logo PrintWorks.png" alt="Logo PrintWorks" width="50">
+                    <span class="navbar-brand-text">PrintWorks</span>
                 </a>
-            </div>
-        </div>
-    </nav>
-    <section class="bg-gradient-success text-light text-center py-5">
-        <div class="container">
-            <h1 class="display-7">Iniciar Sesión</h1>
-            <p class="lead">Accede a tu cuenta para gestionar tus proyectos y servicios.</p>
-        </div>
-    </section>
-
-    <div class="container mt-5">
-        <form method="POST" class="needs-validation" novalidate>
-            <div class="mb-3">
-                <label for="username">Correo Electrónico</label>
-                <input type="email" class="form-control" id="username" name="email" required placeholder="Ingresa tu correo electrónico">
-                <div class="valid-feedback">Correo válido!</div>
-                <div class="invalid-feedback">Por favor ingresa un correo válido.</div>
-            </div>
-            <div class="mb-3">
-                <label for="password">Contraseña</label>
-                <input type="password" class="form-control" id="password" name="password" required placeholder="Ingresa tu contraseña">
-                <div class="valid-feedback">¡Contraseña válida!</div>
-                <div class="invalid-feedback">Por favor ingresa una contraseña válida.</div>
-            </div>
-            <button type="submit" class="btn btn-danger">Ingresar</button>
-        </form>
-    </div>
-
-    <footer class="footer bg-dark text-light py-4 mt-5">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>Contáctanos</h5>
-                    <p>Correo electrónico: PrintWorksCreations@gmail.com</p>
-                    <p>Teléfono: +52 2343976920</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Enlaces Rápidos</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="../index.html">Inicio</a></li>
-                        <li><a href="galery.html">Galería</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                        <li><a href="sobre.html">Sobre Nosotros</a></li>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="../index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="galery.html">Galería</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sobre.html">Sobre Nosotros</a>
+                        </li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <h5>Síguenos</h5>
-                    <ul class="list-inline">
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                    </ul>
+                <div class="ml-auto">
+                    <a href="#" class="nav-link text-danger">
+                        <i class="fas fa-user text-danger"></i> Iniciar Sesión
+                    </a>
                 </div>
             </div>
-            <hr>
-            <p class="text-center">&copy; 2024 PrintWorks. Todos los derechos reservados.</p>
+        </nav>
+        <section class="bg-gradient-success text-light text-center py-5">
+            <div class="container">
+                <h1 class="display-7">Iniciar Sesión</h1>
+                <p class="lead">Accede a tu cuenta para gestionar tus proyectos y servicios.</p>
+            </div>
+        </section>
+
+        <div class="container mt-5">
+            <form method="POST" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="username">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="username" name="email" required placeholder="Ingresa tu correo electrónico">
+                    <div class="valid-feedback">Correo válido!</div>
+                    <div class="invalid-feedback">Por favor ingresa un correo válido.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="password">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" required placeholder="Ingresa tu contraseña">
+                    <div class="valid-feedback">¡Contraseña válida!</div>
+                    <div class="invalid-feedback">Por favor ingresa una contraseña válida.</div>
+                </div>
+                <button type="submit" class="btn btn-danger">Ingresar</button>
+            </form>
         </div>
-    </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <footer class="footer bg-dark text-light py-4 mt-5">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Contáctanos</h5>
+                        <p>Correo electrónico: PrintWorksCreations@gmail.com</p>
+                        <p>Teléfono: +52 2343976920</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Enlaces Rápidos</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="../index.html">Inicio</a></li>
+                            <li><a href="galery.html">Galería</a></li>
+                            <li><a href="contacto.html">Contacto</a></li>
+                            <li><a href="sobre.html">Sobre Nosotros</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Síguenos</h5>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <p class="text-center">&copy; 2024 PrintWorks. Todos los derechos reservados.</p>
+            </div>
+        </footer>
 
-    <!-- Validación de formulario -->
-    <script>
-        // Activa la validación en el formulario
-        (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-                var forms = document.getElementsByClassName('needs-validation');
-                Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
-                        event.preventDefault(); // Evita el envío real del formulario
-                        
-                        var email = document.getElementById('username').value;
-                        var password = document.getElementById('password').value;
-                        
-                        // Validar correo con expresión regular
-                        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]/;
-                        let isValid = true;
-                        
-                        // Limpiar todas las clases de validación previas
-                        document.getElementById('username').classList.remove('is-invalid', 'is-valid');
-                        document.getElementById('password').classList.remove('is-invalid', 'is-valid');
-                        
-                        // Validación del correo
-                        if (!emailRegex.test(email)) {
-                            document.getElementById('username').classList.add('is-invalid');
-                            isValid = false;
-                        } else {
-                            document.getElementById('username').classList.add('is-valid');
-                        }
-                        
-                        // Validación de la contraseña
-                        if (password.trim() === '') {
-                            document.getElementById('password').classList.add('is-invalid');
-                            isValid = false;
-                        } else {
-                            document.getElementById('password').classList.add('is-valid');
-                        }
-    
-                        // Si los datos son válidos, redirigir
-                        if (isValid) {
-                            if (email === "admin@gmail.com" && password === "qwerty") {
-                                window.location.href = 'admin.html';  // Redirige a la página admin.html
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+        <!-- Validación de formulario -->
+        <script>
+            // Activa la validación en el formulario
+            (function() {
+                'use strict';
+                window.addEventListener('load', function() {
+                    var forms = document.getElementsByClassName('needs-validation');
+                    Array.prototype.filter.call(forms, function(form) {
+                        form.addEventListener('submit', function(event) {
+                            event.preventDefault(); // Evita el envío real del formulario
+                            
+                            var email = document.getElementById('username').value;
+                            var password = document.getElementById('password').value;
+                            
+                            // Validar correo con expresión regular
+                            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]/;
+                            let isValid = true;
+                            
+                            // Limpiar todas las clases de validación previas
+                            document.getElementById('username').classList.remove('is-invalid', 'is-valid');
+                            document.getElementById('password').classList.remove('is-invalid', 'is-valid');
+                            
+                            // Validación del correo
+                            if (!emailRegex.test(email)) {
+                                document.getElementById('username').classList.add('is-invalid');
+                                isValid = false;
                             } else {
-                                window.location.href = 'historial.html';  // Redirige a pedidos.html
+                                document.getElementById('username').classList.add('is-valid');
                             }
-                        }
+                            
+                            // Validación de la contraseña
+                            if (password.trim() === '') {
+                                document.getElementById('password').classList.add('is-invalid');
+                                isValid = false;
+                            } else {
+                                document.getElementById('password').classList.add('is-valid');
+                            }
+        
+                            // Si los datos son válidos, redirigir
+                            if (isValid) {
+                                if (email === "admin@gmail.com" && password === "qwerty") {
+                                    window.location.href = 'admin.html';  // Redirige a la página admin.html
+                                } else {
+                                    window.location.href = 'historial.html';  // Redirige a pedidos.html
+                                }
+                            }
+                            
+                            form.classList.add('was-validated');  // Aplica los estilos de validación
+                        }, false);
                         
-                        form.classList.add('was-validated');  // Aplica los estilos de validación
-                    }, false);
-                    
-                    // Agregar eventos de input para limpiar los errores mientras el usuario escribe
-                    var emailField = document.getElementById('username');
-                    var passwordField = document.getElementById('password');
-                    
-                    emailField.addEventListener('input', function() {
-                        // Limpiar los mensajes de error mientras se escribe
-                        emailField.classList.remove('is-invalid', 'is-valid');
+                        // Agregar eventos de input para limpiar los errores mientras el usuario escribe
+                        var emailField = document.getElementById('username');
+                        var passwordField = document.getElementById('password');
+                        
+                        emailField.addEventListener('input', function() {
+                            // Limpiar los mensajes de error mientras se escribe
+                            emailField.classList.remove('is-invalid', 'is-valid');
+                        });
+                        
+                        passwordField.addEventListener('input', function() {
+                            // Limpiar los mensajes de error mientras se escribe
+                            passwordField.classList.remove('is-invalid', 'is-valid');
+                        });
                     });
-                    
-                    passwordField.addEventListener('input', function() {
-                        // Limpiar los mensajes de error mientras se escribe
-                        passwordField.classList.remove('is-invalid', 'is-valid');
-                    });
-                });
-            }, false);
-        })();
-    </script>
-    
-</body>
+                }, false);
+            })();
+        </script>
+        
+    </body>
 </html>

@@ -1,73 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros</title>
 
-    <!-- Libreria de Bootstrap Css -->
+    <!-- Libreria -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
-    <!-- Librearia de Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-    <title>PrintWorks</title>
-
-    <!-- Estilos de la pagina -->
+    <!-- Estilos -->
     <style>
-        /* Agrega un margen horizontal entre las opciones del menú */
-        .navbar-nav .nav-link {
-            margin-right: 120px; /* Ajusta el valor según sea necesario */
-        }
-
-        /* Ajusate automatico de img */
-        .feature img {
-            max-width: 100%;
-            height: auto;
-        }
-    
-        /* Evita que el último elemento tenga margen derecho */
-        .navbar-nav .nav-item:last-child .nav-link {
-            margin-right: 0;
-        }   
-
-        /* Estilo para el degradado */
-        .bg-gradient-success {
-            background: linear-gradient(to bottom right, #ab0d0d, #ea0000);
-        }
-
-        /* Ajusate automatico de img */
-        .feature img {
-          max-width: 100%;
-          height: auto;
-        }
-
-         /*  fondo de toda la página a negro y el color del texto a blanco */
-         body {
-            background-color: #000; /* Negro */
-        }
-
-           /* Estilos para el nombre de la empresa en la barra de navegación */
-    .navbar-brand {
-        display: flex;
-        align-items: center; /* Centra verticalmente los elementos */
-    }
-
-    .navbar-brand-text {
-        font-family: 'Arial Black', sans-serif;
-        font-weight: bold;
-        font-size: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-left: 10px;
-    }
-
+        .navbar-nav .nav-link {margin-right: 120px; }
+        .feature img {max-width: 100%;height: auto;}
+        .navbar-nav .nav-item:last-child .nav-link {margin-right: 0;}   
+        .bg-gradient-success {background: linear-gradient(to bottom right, #ab0d0d, #ea0000);}
+        .feature img {max-width: 100%;height: auto;}
+        .navbar-brand {display: flex;align-items: center;}
+        .navbar-brand-text {font-family: 'Arial Black', sans-serif;font-weight: bold;font-size: 1rem;text-transform: uppercase;letter-spacing: 1px;margin-left: 10px;}
+        body {background-color: #000 /* Negro */}
     </style>
+  </head>
 
-    
-
-  <!-- Cuerpo de la pagina -->
   <body>
-
     <!-- Menu de navegacion -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container text-center">
@@ -88,17 +43,13 @@
                   </li>
               </ul>
           </div>
-          <!-- Ícono de logout a la derecha -->
           <div class="ml-auto">
               <a href="login.html" class="nav-link text-danger">
                   <i class="fas fa-user text-danger"></i> Iniciar Sesión
               </a>
           </div>
       </div>
-  </nav>
-
-    <!-- Fin Menu de Navegacion -->
-
+    </nav>
 
     <!-- Seccion de Bienvenida -->
     <section class="bg-gradient-success text-light text-center py-5">
@@ -108,76 +59,71 @@
         </div>
     </section>
 
-     <!-- Seccion de integrantes -->
-     <section class="features py-5 bg-light">
-      <div class="container">
-          <div class="row">
-              <div class="col-md-12">
-                  <div class="feature text-center mb-4">
-                      <h2>Nuestros Integrantes</h2>
-                      <p>Estamos comprometidos en llevar tus ideas a la realidad con creatividad y calidad.</p>
-                  </div><br><br>
-              </div>
-          </div>
-  
-          <div class="row">
-            <div class="col-md-4 text-center">
-                <h5>Christian Alegria Ruiz</h5>
-                <p>Rol: Programador</p>
-            </div>
-            <div class="col-md-4 text-center">
-                <h5>Gonzales Guerrero Daniel</h5>
-                <p>Rol: Especialista en Diseño e Impresión 3D</p>
-            </div>
-            <div class="col-md-4 text-center">
-                <h5>Linares Martines Margarita</h5>
-                <p>Rol: Gerente de Proyectos</p>
-            </div>
-        </div><br>        
-    </div>
-  </section>
-
-</body>
-
-
-
-    <!-- Pie de la pagina -->
-    <footer class="footer bg-dark text-light py-4">
-        <div class="container text-center">
-          <div class="row">
-            <div class="col-md-4">
-              <h5>Contáctanos</h5>
-              <p>Correo electrónico: PrintWorksCreations@gmail.com</p>
-              <p>Teléfono: +52 2343976920</p>
-            </div>
-            <div class="col-md-4">
-              <h5>Enlaces Rápidos</h5>
-              <ul class="list-unstyled">
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="galery.html">Galeria</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-                <li><a href="#">Sobre Nosotros</a></li>
-              </ul>
-            </div>
-            <div class="col-md-4">
-              <h5>Síguenos</h5>
-              <ul class="list-inline">
-                <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin"></i></a></li>
-              </ul>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
+    <!-- Seccion de integrantes -->
+    <section class="features py-5 bg-light">
+    <div class="container">
+        <div class="row">
             <div class="col-md-12">
-              <p class="text-center">&copy; 2024 PrintWorks. Todos los derechos reservados.</p>
+                <div class="feature text-center mb-4">
+                    <h2>Nuestros Integrantes</h2>
+                    <p>Estamos comprometidos en llevar tus ideas a la realidad con creatividad y calidad.</p>
+                </div><br><br>
             </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4 text-center">
+              <h5>Christian Alegria Ruiz</h5>
+              <p>Rol: Programador</p>
+          </div>
+          <div class="col-md-4 text-center">
+              <h5>Gonzales Guerrero Daniel</h5>
+              <p>Rol: Especialista en Diseño e Impresión 3D</p>
+          </div>
+          <div class="col-md-4 text-center">
+              <h5>Linares Martines Margarita</h5>
+              <p>Rol: Gerente de Proyectos</p>
+          </div>
+        </div><br>        
+      </div>
+    </section>
+  </body>
+
+  <!-- Pie de la pagina -->
+  <footer class="footer bg-dark text-light py-4">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Contáctanos</h5>
+            <p>Correo electrónico: PrintWorksCreations@gmail.com</p>
+            <p>Teléfono: +52 2343976920</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Enlaces Rápidos</h5>
+            <ul class="list-unstyled">
+              <li><a href="../index.html">Inicio</a></li>
+              <li><a href="galery.html">Galeria</a></li>
+              <li><a href="contacto.html">Contacto</a></li>
+              <li><a href="#">Sobre Nosotros</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Síguenos</h5>
+            <ul class="list-inline">
+              <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+              <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+              <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+              <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
           </div>
         </div>
-      </footer>
+        <hr>
+        <div class="row">
+          <div class="col-md-12">
+            <p class="text-center">&copy; 2024 PrintWorks. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
-
-<!-- End Sobre -->
