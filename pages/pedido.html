@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Contacto de Landing Page</title>
+        <title>Pedidos</title>
 
         <!-- Librerias -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -119,7 +119,7 @@
         <script type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
             import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js";
-
+        
             const firebaseConfig = {
                 apiKey: "AIzaSyCHTUNTswipZegyNYJuCCHdaz21gsr0cKo",
                 authDomain: "printworks-edbd5.firebaseapp.com",
@@ -129,37 +129,78 @@
                 messagingSenderId: "113733361956",
                 appId: "1:113733361956:web:ca61db65c6e1c926f86fc2"
             };
-            
+        
             const app = initializeApp(firebaseConfig);
             const database = getDatabase(app);
-
+        
             const contactForm = document.getElementById("contactForm");
-                contactForm.addEventListener("submit", function(event) {
-                    event.preventDefault();
-            const nombre = document.getElementById("nombre").value;
-            const servicio = document.getElementById("servicio").value;
-            const correo = document.getElementById("correo").value;
-            const telefono = document.getElementById("telefono").value;
-            const mensaje = document.getElementById("mensaje").value;
-
-            const messagesRef = ref(database, "mensajes");
-            const newMessageRef = push(messagesRef);
-            set(newMessageRef, {
-                nombre: nombre,
-                servicio: servicio,
-                correo: correo,
-                telefono: telefono,
-                mensaje: mensaje,
-                finalizado: false // Agrega el valor de finalizado como false
-            })
-            .then(() => {
-                alert("Pedido enviado correctamente.");
-                contactForm.reset();
-            })
-            .catch(error => {
-                console.error("Error al enviar el pedido: ", error);
+        
+            contactForm.addEventListener("submit", function (event) {
+                event.preventDefault(); // Evita el envío predeterminado
+        
+                let isValid = true;
+        
+                // Validación dinámica
+                Array.from(contactForm.elements).forEach((field) => {
+                    if ((field.tagName === "INPUT" || field.tagName === "TEXTAREA" || field.tagName === "SELECT") && field.hasAttribute("required")) {
+                        if (
+                            field.value.trim() === "" || 
+                            (field.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value))
+                        ) {
+                            field.classList.add("is-invalid");
+                            field.classList.remove("is-valid");
+                            isValid = false;
+                        } else {
+                            field.classList.remove("is-invalid");
+                            field.classList.add("is-valid");
+                        }
+                    }
+                });
+        
+                if (isValid) {
+                    // Si todos los campos son válidos, enviar a Firebase
+                    const nombre = document.getElementById("nombre").value;
+                    const servicio = document.getElementById("servicio").value;
+                    const correo = document.getElementById("correo").value;
+                    const telefono = document.getElementById("telefono").value;
+                    const mensaje = document.getElementById("mensaje").value;
+        
+                    const messagesRef = ref(database, "mensajes");
+                    const newMessageRef = push(messagesRef);
+                    set(newMessageRef, {
+                        nombre: nombre,
+                        servicio: servicio,
+                        correo: correo,
+                        telefono: telefono,
+                        mensaje: mensaje,
+                        finalizado: false // Agrega el valor de finalizado como false
+                    })
+                        .then(() => {
+                            alert("Pedido enviado correctamente.");
+                            contactForm.reset();
+        
+                            // Elimina clases de validación después del envío exitoso
+                            Array.from(contactForm.elements).forEach((field) => {
+                                field.classList.remove("is-valid", "is-invalid");
+                            });
+                        })
+                        .catch((error) => {
+                            console.error("Error al enviar el pedido: ", error);
+                        });
+                }
             });
-        });
+        
+            // Limpiar mensajes de error dinámicamente mientras se escribe
+            Array.from(contactForm.elements).forEach((field) => {
+                if (field.tagName === "INPUT" || field.tagName === "TEXTAREA" || field.tagName === "SELECT") {
+                    field.addEventListener("input", function () {
+                        if (field.classList.contains("is-invalid") || field.classList.contains("is-valid")) {
+                            field.classList.remove("is-invalid", "is-valid");
+                        }
+                    });
+                }
+            });
         </script>
+        
     </body>
 </html>
